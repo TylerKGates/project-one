@@ -3,19 +3,31 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="blackJackCss.css" media="screen" title="no title" charset="utf-8">
-    <title>Blackjack!</title>
+    <title>Blackjack! 🃑</title>
   </head>
   <body>
-
-
-    <script type="text/javascript" src="betJs.js"></script>
-    <script type="text/javascript" src="blackJackJs.js"></script>
-    <div class="buttons">
-      <button>Deal Cards</button>
-      <button>Increase Bet</button>
-      <button>Decrease Bet</button>
-      <button>Hit</button>
-      <button>Stand</button>
+    <h1>Let's Play BlackJack!</h1>
+    <div id="bank">
+      <h3>Bank</h3>
+      <p>Your bank: <span id="stacks"></span></p>
     </div>
+    <div id="betDiv">
+      <p>Your bet: <span id="bet"></span></p>
+    </div>
+    <div class="Player">
+      Player
+    </div>
+
+    <div class="buttons">
+      <button id="dealButton">Deal Cards</button>
+      <button id="increaseBetButton">Increase Bet</button>
+      <button id="decreaseBetButton">Decrease Bet</button>
+      <button id="hitButton">Hit</button>
+      <button id="standButton">Stand</button>
+      <button id="resetButton">Reset</button>
+    </div>
+
+    <script type="text/javascript" src="playerMoves.js"></script>
+    <script type="text/javascript" src="coreGame.js"></script>
   </body>
 </html>

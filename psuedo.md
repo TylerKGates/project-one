@@ -27,4 +27,8 @@ var values
 
 basic layout
 
-separate hands for dealer/user 
+separate hands for dealer/user
+
+hit can only be used when it's player's turn 
+1. starts at 1000
+1.
