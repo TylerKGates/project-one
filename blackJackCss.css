@@ -1,0 +1,31 @@
+body {
+  background-color:  green;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.card {
+  display: inline-block;
+  width: 130px;
+  height: 160px;
+  border: 10px solid red;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+.buttons {
+  display: block;
+  margin-top: 90px;
+  margin-left: 90px;
+}
+
+.upper-left {
+  margin-left: 5px;
+}
+
+.lower-right {
+  margin-top: 120px;
+  margin-left: 99px;
+}
