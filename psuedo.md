@@ -39,3 +39,5 @@ player is a function that has hit, deal and stand buttons inside?
 
 deal function tells user value of their cards.
 after value is displayed, ask user if they want to hit or stand. 
+
+when player wins, money goes to player's bank, when loses bet, money goes to dealer.

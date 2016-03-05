@@ -1,3 +1,10 @@
+//variables for game
+var SUITS = ['♥', '♦', '♠', '♣'];
+var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+var cardsOnTable = []
+var deck = makeDeck();
+var el;
+
 //deals card to user
 var deal = document.querySelector('#dealButton');
 deal.addEventListener("click", function() {
@@ -20,15 +27,6 @@ while (temp.length > 0) {
  }
 }
 
-//variables for cards
-var SUITS = ['♥', '♦', '♠', '♣'];
-var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-// var valueOfRANKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-var el;
-
-// addupcard func
-
 //makes card
 function makeCard (suitParam, rankParam) {
     var val;
@@ -46,8 +44,6 @@ function makeCard (suitParam, rankParam) {
      element: el
   };
 };
-var cardValue = makeCard();
-
 
 //makes deck
 function makeDeck () {
@@ -59,32 +55,78 @@ function makeDeck () {
    }
    return deck;
 }
-var deck = makeDeck();
-console.log(deck)
+
 
 //pulls card from array
 function pullCard(deck) {
   var card;
   someIndex = Math.floor(Math.random() * deck.length);
   card = deck[someIndex];
+
+  sum = addCardValues();
   if (card.rank === 'A') {
-    // sum = addupcard()
-    // if (sum + 11 > 21) {
-    //   card.value = 1;
-    // } else {
-    //   card.value = 11
-    // }
+    if (sum + 11 > 21) {
+      card.value = 1;
+    } else {
+      card.value = 11;
+    }
   };
   deck.splice(someIndex, 1)[0];
-  console.log(card);
-  console.log(deck);
-   var el = document.createElement('div');
-   document.body.appendChild(el);
-   el.classList.add('card');
-   el.innerHTML = "<div class='upper-left'>" +
-                     card.rank + card.suit +
-                   "</div>" +
-                   "<div class='lower-right'>" +
-                     card.rank + card.suit +
-                   "</div>";
+  cardsOnTable.push(card.value);
+  renderCard(card);
+  hitOrBust();
 }
+
+
+function addCardValues() {
+  var total = 0;
+  for(var i = 0; i < cardsOnTable.length; i++){
+    total += cardsOnTable[i];
+  }
+  return total
+}
+
+function hitOrBust() {
+  var cardValues = addCardValues()
+  if (cardValues > 21) {
+    alert ("Bust!");
+    restartGame();
+  } else if (cardValues === 21) {
+    alert ("You win!")
+    restartGame();
+  }
+}
+
+function renderCard(card) {
+  var el = document.createElement('div');
+  document.body.appendChild(el);
+  el.classList.add('card');
+  el.innerHTML = "<div class='upper-left'>" +
+                    card.rank + card.suit +
+                  "</div>" +
+                  "<div class='lower-right'>" +
+                    card.rank + card.suit +
+                  "</div>";
+}
+
+function restartGame() {
+  cardsOnTable = [];
+  deck = makeDeck();
+  setTimeout(function(){ document.querySelectorAll('.card').remove() ; }, 50)
+}
+
+// remove elements function found on stackoverflow
+Element.prototype.remove = function() {
+  this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+  for(var i = this.length - 1; i >= 0; i--) {
+    if(this[i] && this[i].parentElement) {
+      this[i].parentElement.removeChild(this[i]);
+    }
+  }
+}
+
+// function compMove {
+//   return pullCard();
+// }
