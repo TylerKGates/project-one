@@ -29,6 +29,13 @@ basic layout
 
 separate hands for dealer/user
 
-hit can only be used when it's player's turn 
-1. starts at 1000
-1.
+hit can only be used when it's player's turn
+1. bank starts at 1000
+1. bet can only be increased/decreased by 10
+1. use for loop, querySelectorAll in the class, then remove child (for reset function)
+
+player is a function that has hit, deal and stand buttons inside?
+
+
+deal function tells user value of their cards.
+after value is displayed, ask user if they want to hit or stand. 

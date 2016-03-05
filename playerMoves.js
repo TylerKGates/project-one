@@ -3,32 +3,47 @@ var stacks = 1000;
 document.querySelector('#stacks').innerText = stacks; //add this to the end of each function
 
 //shows bet amount
-var bet = 10;
+var bet = 0;
 document.querySelector('#bet').innerText = bet;
 
+var turn;
+function playerMove(turn) {
+  turn = alert ("Your turn, place your bet then hit the deal cards button!")
+}
+playerMove(turn);
+
+//increases bet
 var someBet;
 function increaseBet(someBet) {
-  prompt ("Place your bets!")
+  someBet = prompt ("Place your bets!");
   if (someBet > stacks) {
-    alert ("Not enough money, sorry champ.")
-  } if (someBet > 0) {
-    alert ("Tryna scam me?")
+    alert ("Not enough money, sorry champ.");
+  } if (someBet <= 0) {
+    alert ("Tryna scam me?");
   } else {
-    return stacks - someBet;
-  }
+    stacks = stacks - someBet;
+    bet = + someBet;
+  };
+  document.querySelector('#stacks').innerText = stacks;
+  document.querySelector('#bet').innerText = bet;
+  return bet;
 }
-
-var raiseBet = document.querySelector('#increaseBetButton');
-raiseBet.addEventListener("click", function() {
-  increaseBet(someBet)
-});
-
-var hit = document.querySelector('#hitButton');
-hit.addEventListener("click", function() {
-  pullCard(deck);
-});
-
-var reset = document.querySelector('#resetButton');
-reset.addEventListener("click", function() {
-
-});
+someBet = bet;
+//decreases bet
+var minusBet;
+var subtract;
+function decreaseBet(minusBet) {
+  minusBet = prompt ("Not feelin' so lucky? Decrease your bet!");
+  if (minusBet > stacks) {
+    alert ("Can't do that.");
+  } if (minusBet <= 0) {
+    alert ("Nope.");
+  } else {
+    subtract = someBet - minusBet;
+    bet = + minusBet;
+    stacks = stacks - subtract;
+  }
+  document.querySelector('#stacks').innerText = stacks;
+  document.querySelector('#bet').innerText = bet;
+  return bet;
+}

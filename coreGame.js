@@ -1,4 +1,4 @@
-//deals card
+//deals card to user
 var deal = document.querySelector('#dealButton');
 deal.addEventListener("click", function() {
   pullCard(deck);
@@ -22,6 +22,8 @@ while (temp.length > 0) {
 
 var SUITS = ['♥', '♦', '♠', '♣'];
 var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+var valueOfRANKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 
 
