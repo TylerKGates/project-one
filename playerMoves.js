@@ -6,11 +6,13 @@ document.querySelector('#stacks').innerText = stacks; //add this to the end of e
 var bet = 0;
 document.querySelector('#bet').innerText = bet;
 
+//player move that starts with an alert.
 var turn;
 function playerMove(turn) {
   turn = alert ("Your turn, place your bet then hit the deal cards button!")
 }
 playerMove(turn);
+
 
 //increases bet
 var someBet;

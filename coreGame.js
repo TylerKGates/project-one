@@ -20,23 +20,34 @@ while (temp.length > 0) {
  }
 }
 
+//variables for cards
 var SUITS = ['♥', '♦', '♠', '♣'];
 var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-
-var valueOfRANKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-
+// var valueOfRANKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 var el;
 
+// addupcard func
+
 //makes card
 function makeCard (suitParam, rankParam) {
+    var val;
+    if (rankParam === 'A') {
+      val = 0;
+    } else if (rankParam === 'J' || rankParam === 'Q' || rankParam === 'K') {
+      val = 10;
+    } else {
+      val = parseInt(rankParam);
+    };
    return {
+     value: val,
      suit: suitParam,
      rank: rankParam,
      element: el
-   };
-}
+  };
+};
+var cardValue = makeCard();
+
 
 //makes deck
 function makeDeck () {
@@ -48,14 +59,22 @@ function makeDeck () {
    }
    return deck;
 }
-
 var deck = makeDeck();
+console.log(deck)
 
 //pulls card from array
 function pullCard(deck) {
-  var card
-  someIndex = Math.floor(Math.random() * deck.length)
+  var card;
+  someIndex = Math.floor(Math.random() * deck.length);
   card = deck[someIndex];
+  if (card.rank === 'A') {
+    // sum = addupcard()
+    // if (sum + 11 > 21) {
+    //   card.value = 1;
+    // } else {
+    //   card.value = 11
+    // }
+  };
   deck.splice(someIndex, 1)[0];
   console.log(card);
   console.log(deck);
