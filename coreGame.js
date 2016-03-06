@@ -17,7 +17,7 @@ function shuffle (someArray) {
  var temp = [];
  for (var i = 0; i < someArray.length; i++) {
    temp[i] = someArray[i];
- }
+}
 var currentIndex = 0;
 while (temp.length > 0) {
    var someIndex = Math.floor(Math.random() * temp.length);
@@ -30,6 +30,7 @@ while (temp.length > 0) {
 //makes card
 function makeCard (suitParam, rankParam) {
     var val;
+    //sets value to cards
     if (rankParam === 'A') {
       val = 0;
     } else if (rankParam === 'J' || rankParam === 'Q' || rankParam === 'K') {
@@ -63,6 +64,7 @@ function pullCard(deck) {
   someIndex = Math.floor(Math.random() * deck.length);
   card = deck[someIndex];
 
+//determines whether the ace card will be 1 or 11.
   sum = addCardValues();
   if (card.rank === 'A') {
     if (sum + 11 > 21) {
@@ -77,7 +79,7 @@ function pullCard(deck) {
   hitOrBust();
 }
 
-
+//adds card values together.
 function addCardValues() {
   var total = 0;
   for(var i = 0; i < cardsOnTable.length; i++){
@@ -86,6 +88,7 @@ function addCardValues() {
   return total
 }
 
+//determines whether or not the player's card value is over 21 or not.
 function hitOrBust() {
   var cardValues = addCardValues()
   if (cardValues > 21) {
@@ -97,6 +100,7 @@ function hitOrBust() {
   }
 }
 
+//makes card appear on screen
 function renderCard(card) {
   var el = document.createElement('div');
   document.body.appendChild(el);
@@ -109,13 +113,14 @@ function renderCard(card) {
                   "</div>";
 }
 
+//resets cards on table and reshuffles deck
 function restartGame() {
   cardsOnTable = [];
   deck = makeDeck();
   setTimeout(function(){ document.querySelectorAll('.card').remove() ; }, 50)
 }
 
-// remove elements function found on stackoverflow
+// REMOVE ELEMENTS FUNCTION FOUND ON STACKOVERFLOW (user: Johan Dettmar)
 Element.prototype.remove = function() {
   this.parentElement.removeChild(this);
 }
@@ -125,7 +130,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
       this[i].parentElement.removeChild(this[i]);
     }
   }
-}
+} //END OF STACKOVERFLOW FUNCTION
 
 // function compMove {
 //   return pullCard();
