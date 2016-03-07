@@ -4,7 +4,7 @@ var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 var cardsOnTable = [];
 var dealersCards = [];
 var deck = makeDeck();
-var el;
+var el; //ADDED THESE TO NEW FILES
 
 //deals card to user
 var deal = document.querySelector('#dealButton');
@@ -14,7 +14,7 @@ deal.addEventListener("click", function() {
   pullDealerCard(deck);
   pullDealerCard(deck);
   stacks += bet;
-});
+}); //ADDED THIS TO NEW FILE
 
 //shuffles deck
 function shuffle (someArray) {
@@ -29,7 +29,7 @@ while (temp.length > 0) {
    someArray[currentIndex] = nextValue;
    currentIndex += 1;
  }
-}
+} //ADDED THIS TO DECK.JS
 
 //makes card
 function makeCard (suitParam, rankParam) {
@@ -48,7 +48,7 @@ function makeCard (suitParam, rankParam) {
      rank: rankParam,
      element: el
   };
-};
+}; //ADDED TO DECK.JS
 
 //makes deck
 function makeDeck () {
@@ -59,10 +59,10 @@ function makeDeck () {
      }
    }
    return deck;
-}
+} //ADDDED TO DECK.JS
 
 
-//pulls card from array
+//pulls card from array //ADDED TO PLAYERMOVES.JS
 function pullCard(deck) {
   var card;
   someIndex = Math.floor(Math.random() * deck.length);
@@ -90,7 +90,7 @@ function addCardValues() {
 };
   return total;
 };
-// document.querySelector('#cardTotal').innerText = "Your value: " + addCardValues();
+
 
 //determines whether or not the player's card value is over 21 or not.
 function hitOrBust() {
@@ -100,12 +100,12 @@ function hitOrBust() {
     stacks -= someBet;
   } else if (cardValues === 21) {
     alert ("21!")
-    // bet = bet + stacks; 
+    // bet = bet + stacks;
   }
-}
+} //ADDED TO PLAYERMOVES.JS
 
 //makes card appear on screen
-function renderCard(card) {
+function renderCard(card) { //ADDED TO COREGAME.JS
   var el = document.createElement('div');
   document.body.appendChild(el);
   el.classList.add('card');
@@ -139,8 +139,10 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
   }
 } //END OF STACKOVERFLOW FUNCTION
 
+//ADDED TO COREGAME.JS
 
 
+//ADDED TO DEALERMOVES.JS
   //ALL DEALER FUNCTIONS
 function renderCompCard(card) {
   var compCard = document.createElement('div');

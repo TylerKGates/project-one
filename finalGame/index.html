@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    <title>Blackjack! 🃑</title>
+  </head>
+  <body>
+    <h1>Let's Play BlackJack!</h1>
+    <div id="bank">
+      <h3>Bank</h3>
+      <p>Your bank: <span id="stacks"></span></p>
+    </div>
+    <div id="betDiv">
+      <p>Your bet: <span id="bet"></span></p>
+    </div>
+    <div id="PlayerAndDealer">
+        <div class="Player">
+      Player
+        </div>
+
+    </div>
+
+
+    <div class="buttons">
+      <button id="dealButton">Deal Cards</button>
+      <button id="increaseBetButton">Increase Bet</button>
+      <button id="decreaseBetButton">Decrease Bet</button>
+      <button id="hitButton">Hit</button>
+      <button id="standButton">End Turn</button>
+    </div>
+
+
+
+    <!-- <div id="cardTotal">
+      Your value:
+    </div> -->
+    <script type="text/javascript" src="globalVars.js"></script>
+    <script type="text/javascript" src="dealerMoves.js"></script>
+    <script type="text/javascript" src="bet.js"></script>
+    <script type="text/javascript" src="buttons.js"></script>
+    <script type="text/javascript" src="playerMoves.js"></script>
+    <script type="text/javascript" src="coreGame.js"></script>
+  </body>
+</html>
