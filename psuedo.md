@@ -42,4 +42,4 @@ after value is displayed, ask user if they want to hit or stand.
 
 when player wins, money goes to player's bank, when loses bet, money goes to dealer.
 
-pullCard function has to display player and dealer's hand.
+pullCard function has to display player and dealer's hand. When player pressed "Stand" button, dealer goes.

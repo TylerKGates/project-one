@@ -19,9 +19,14 @@ h1 {
   font-size: 20px;
 }
 
+#PlayerAndDealer {
+  display: inline;
+}
+
 .Player {
   margin-top: 22px;
   margin-left: 100px;
+  max-width: 10px;
 }
 
 .card {
@@ -30,6 +35,15 @@ h1 {
   height: 160px;
   border: 10px solid red;
   margin-left: 100px;
+  margin-top: 25px;
+}
+
+.compCard {
+  display: inline-block;
+  width: 130px;
+  height: 160px;
+  border: 10px solid black;
+  margin-left: 800px;
   margin-top: 50px;
 }
 
@@ -48,7 +62,7 @@ h1 {
   margin-left: 99px;
 }
 
-.cardTotal {
+#cardTotal {
   margin-top: 30px;
   margin-left: 255px;
 }

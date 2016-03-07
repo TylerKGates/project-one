@@ -1,7 +1,8 @@
 //variables for game
 var SUITS = ['♥', '♦', '♠', '♣'];
 var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-var cardsOnTable = []
+var cardsOnTable = [];
+var dealersCards = [];
 var deck = makeDeck();
 var el;
 
@@ -10,6 +11,9 @@ var deal = document.querySelector('#dealButton');
 deal.addEventListener("click", function() {
   pullCard(deck);
   pullCard(deck);
+  pullDealerCard(deck);
+  pullDealerCard(deck);
+  stacks += bet;
 });
 
 //shuffles deck
@@ -63,7 +67,6 @@ function pullCard(deck) {
   var card;
   someIndex = Math.floor(Math.random() * deck.length);
   card = deck[someIndex];
-
 //determines whether the ace card will be 1 or 11.
   sum = addCardValues();
   if (card.rank === 'A') {
@@ -84,19 +87,20 @@ function addCardValues() {
   var total = 0;
   for(var i = 0; i < cardsOnTable.length; i++){
     total += cardsOnTable[i];
-  }
-  return total
-}
+};
+  return total;
+};
+// document.querySelector('#cardTotal').innerText = "Your value: " + addCardValues();
 
 //determines whether or not the player's card value is over 21 or not.
 function hitOrBust() {
   var cardValues = addCardValues()
   if (cardValues > 21) {
     alert ("Bust!");
-    restartGame();
+    stacks -= someBet;
   } else if (cardValues === 21) {
-    alert ("You win!")
-    restartGame();
+    alert ("21!")
+    // bet = bet + stacks; 
   }
 }
 
@@ -116,8 +120,11 @@ function renderCard(card) {
 //resets cards on table and reshuffles deck
 function restartGame() {
   cardsOnTable = [];
+  dealersCards = [];
+  console.log(dealersCards)
   deck = makeDeck();
   setTimeout(function(){ document.querySelectorAll('.card').remove() ; }, 50)
+  setTimeout(function(){ document.querySelectorAll('.compCard').remove() ; }, 50)
 }
 
 // REMOVE ELEMENTS FUNCTION FOUND ON STACKOVERFLOW (user: Johan Dettmar)
@@ -132,6 +139,59 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
   }
 } //END OF STACKOVERFLOW FUNCTION
 
-// function compMove {
-//   return pullCard();
-// }
+
+
+  //ALL DEALER FUNCTIONS
+function renderCompCard(card) {
+  var compCard = document.createElement('div');
+  document.body.appendChild(compCard);
+  compCard.classList.add('compCard')
+  compCard.innerHTML = "<div class='upper-left'>" +
+                    card.rank + card.suit +
+                  "</div>" +
+                  "<div class='lower-right'>" +
+                    card.rank + card.suit +
+                  "</div>";
+}
+
+//essentially same as hitOrBust, but for dealer
+function dealerHitOrBust() {
+  var cardValues = addDealerValues()
+  if (cardValues > 21) {
+    alert ("Dealer has Busted!");
+    // stacks -= someBet;
+    restartGame();
+  } else if (cardValues === 21) {
+    alert ("House always wins!")
+    // stacks += someBet
+    restartGame();
+  }
+}
+
+//separate function for dealer's hand
+function pullDealerCard(deck) {
+  var dealerCard;
+  someIndex = Math.floor(Math.random() * deck.length);
+  dealerCard = deck[someIndex];
+//determines whether the ace card will be 1 or 11.
+  sum = addDealerValues();
+  if (dealerCard.rank === 'A') {
+    if (sum + 11 > 21) {
+      dealerCard.value = 1;
+    } else {
+      dealerCard.value = 11;
+    }
+  };
+  deck.splice(someIndex, 1)[0];
+  dealersCards.push(dealerCard.value);
+  renderCompCard(dealerCard);
+  dealerHitOrBust();
+}
+
+function addDealerValues() {
+  var total = 0;
+  for(var i = 0; i < dealersCards.length; i++){
+    total += dealersCards[i];
+};
+  return total;
+};

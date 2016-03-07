@@ -13,7 +13,6 @@ function playerMove(turn) {
 }
 playerMove(turn);
 
-
 //increases bet
 var someBet;
 function increaseBet(someBet) {
@@ -35,15 +34,12 @@ someBet = bet;
 var minusBet;
 var subtract;
 function decreaseBet(minusBet) {
-  minusBet = prompt ("Not feelin' so lucky? Decrease your bet!");
-  if (minusBet > stacks) {
+  bet = prompt ("Not feelin' so lucky? Decrease your bet!");
+  if ( (bet > stacks) || (bet<=0) ) {
     alert ("Can't do that.");
-  } if (minusBet <= 0) {
-    alert ("Nope.");
+    return
   } else {
-    subtract = someBet - minusBet;
-    bet = + minusBet;
-    stacks = stacks - subtract;
+    stacks = stacks + (1000 - stacks - bet);
   }
   document.querySelector('#stacks').innerText = stacks;
   document.querySelector('#bet').innerText = bet;
