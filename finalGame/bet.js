@@ -45,3 +45,7 @@ function decreaseBet(minusBet) {
   document.querySelector('#bet').innerText = bet;
   return bet;
 }
+
+//shows dealer's bank
+var dealerStacks = 1000;
+document.querySelector('#houseStacks').innerText = dealerStacks;

@@ -55,7 +55,9 @@ function makeDeck () {
 //makes card appear on screen
 function renderCard(card) {
   var el = document.createElement('div');
-  document.body.appendChild(el);
+  var playerCardContainer;
+  playerCardContainer = document.querySelector('#playerCardContainer');
+  playerCardContainer.appendChild(el);
   el.classList.add('card');
   el.innerHTML = "<div class='upper-left'>" +
                     card.rank + card.suit +
@@ -86,3 +88,12 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
     }
   }
 } //END OF STACKOVERFLOW FUNCTION
+
+// function winOrLose(playerTotal, dealerTotal){
+//   if (playerTotal > dealerTotal) {
+//     alert("You win!");
+//   }
+//   else if (dealerTotal >= playerTotal) {
+//     alert("House always wins!");
+//   };
+// };

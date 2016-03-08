@@ -1,7 +1,9 @@
 //ALL DEALER FUNCTIONS
 function renderCompCard(card) {
 var compCard = document.createElement('div');
-document.body.appendChild(compCard);
+var dealerCardContainer;
+dealerCardContainer = document.querySelector('#dealerCardContainer');
+dealerCardContainer.appendChild(compCard);
 compCard.classList.add('compCard')
 compCard.innerHTML = "<div class='upper-left'>" +
                   card.rank + card.suit +
@@ -23,6 +25,7 @@ if (cardValues > 21) {
   // stacks += someBet
   restartGame();
 }
+// winOrLose();
 }
 
 //separate function for dealer's hand
@@ -52,3 +55,4 @@ for(var i = 0; i < dealersCards.length; i++){
 };
 return total;
 };
+// var dealerTotal = addDealerValues();

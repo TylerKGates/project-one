@@ -29,6 +29,14 @@ h1 {
   max-width: 10px;
 }
 
+#playerCardContainer {
+  display: inline;
+}
+
+#dealerCardContainer {
+  display: block;;
+}
+
 .card {
   display: inline-block;
   width: 130px;
@@ -43,8 +51,8 @@ h1 {
   width: 130px;
   height: 160px;
   border: 10px solid black;
-  margin-left: 800px;
-  margin-top: 50px;
+  margin-left: 100px;
+  margin-top: 60px;
 }
 
 .buttons {
@@ -65,4 +73,13 @@ h1 {
 #cardTotal {
   margin-top: 30px;
   margin-left: 255px;
+}
+
+.dealerStuff {
+  margin-top: 65px;
+  margin-left: 350px;
+}
+
+#dealerBank {
+  font-size: 20px;
 }

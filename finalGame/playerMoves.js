@@ -26,6 +26,7 @@ function addCardValues() {
 };
   return total;
 };
+// var playerTotal = addCardValues();
 
 
 //determines whether or not the player's card value is over 21 or not.
